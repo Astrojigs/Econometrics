@@ -1,7 +1,3 @@
-Here’s a practical summary of **Topic 2: The Classical Linear Regression Model** with Python examples to bridge theory and application:
-
----
-
 ## **The Classical Linear Regression Model (CLRM)**
 
 ### **What is Regression?**
@@ -33,9 +29,9 @@ print(df)
 
 #### 2. **The Simple Linear Regression Model**
 The relationship between $Y$ and $X$ is modeled as:
-\[
-Y = \beta_0 + \beta_1X + u
-\]
+
+$Y = \beta_0 + \beta_1X + u$
+
 Where:
 - $\beta_0$: Intercept.
 - $\beta_1$: Slope (rate of change).
@@ -60,9 +56,8 @@ print(f"Slope (β₁): {model.coef_[0]}")
 
 ### **Ordinary Least Squares (OLS)**
 OLS minimizes the sum of squared differences between observed values ($Y$) and predicted values ($\hat{Y}$):
-\[
-\text{RSS} = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2
-\]
+
+$\text{RSS} = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2$
 
 Python automatically performs this minimization when fitting a regression model.
 
