@@ -1,0 +1,136 @@
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm, graphicx, geometry, hyperref}
+\geometry{a4paper, margin=1in}
+\title{Mathematics in Econometrics and Financial Analysis}
+\author{Summarized Concepts}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction to Econometrics}
+Econometrics applies statistical and mathematical techniques to solve economic and financial problems. It quantifies relationships, tests theories, and forecasts trends. The basic form of econometric models is:
+\begin{equation}
+    Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \cdots + \beta_kX_k + u,
+\end{equation}
+where $Y$ is the dependent variable, $X_1, X_2, \ldots, X_k$ are independent variables, $\beta_0$ is the intercept, $\beta_1, \ldots, \beta_k$ are coefficients, and $u$ is the error term.
+
+\section{Core Statistical Foundations}
+\subsection{Descriptive Statistics}
+\textbf{Central Tendency}:
+\begin{itemize}
+    \item Mean: $\mu = \frac{1}{N} \sum_{i=1}^N x_i$
+    \item Median: The middle value in sorted data.
+    \item Mode: The most frequent value.
+\end{itemize}
+\textbf{Spread}:
+\begin{itemize}
+    \item Variance: $\sigma^2 = \frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2$
+    \item Standard Deviation: $\sigma = \sqrt{\sigma^2}$
+\end{itemize}
+\textbf{Shape}:
+\begin{itemize}
+    \item Skewness: $\frac{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^3}{\sigma^3}$
+    \item Kurtosis: $\frac{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^4}{\sigma^4} - 3$
+\end{itemize}
+
+\subsection{Probability and Distributions}
+\textbf{Normal Distribution}:
+\begin{itemize}
+    \item Probability density function: $f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$
+\end{itemize}
+\textbf{Central Limit Theorem}:
+The sampling distribution of the mean approaches a normal distribution as the sample size increases, regardless of the data's original distribution.
+
+\section{Regression Analysis}
+\subsection{Simple Linear Regression}
+The model is:
+\begin{equation}
+    Y = \beta_0 + \beta_1X + u,
+\end{equation}
+where $\beta_0$ is the intercept, $\beta_1$ is the slope, and $u$ is the error term. Coefficients are estimated using Ordinary Least Squares (OLS):
+\begin{equation}
+    \beta_1 = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2}.
+\end{equation}
+
+\subsection{Multiple Linear Regression}
+The matrix form of the model is:
+\begin{equation}
+    Y = X\beta + u,
+\end{equation}
+where $X$ is the matrix of independent variables, $\beta$ is the coefficient vector, and $u$ is the error vector. OLS estimates:
+\begin{equation}
+    \hat{\beta} = (X'X)^{-1}X'Y.
+\end{equation}
+
+\subsection{Goodness of Fit}
+\textbf{R-squared}:
+\begin{equation}
+    R^2 = 1 - \frac{\text{RSS}}{\text{TSS}},
+\end{equation}
+where RSS is the Residual Sum of Squares and TSS is the Total Sum of Squares.
+
+\textbf{Adjusted R-squared} accounts for the number of predictors:
+\begin{equation}
+    R^2_{\text{adj}} = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}.
+\end{equation}
+
+\section{Classical Linear Regression Model (CLRM) Assumptions}
+\begin{enumerate}
+    \item Linearity: $Y$ depends linearly on $X$.
+    \item Zero Mean of Errors: $E(u) = 0$.
+    \item Homoscedasticity: $Var(u) = \sigma^2$.
+    \item No Autocorrelation: $Cov(u_i, u_j) = 0$ for $i \neq j$.
+    \item Normality of Errors: $u \sim N(0, \sigma^2)$.
+\end{enumerate}
+
+\section{Time Series Analysis}
+\subsection{Stationarity}
+A stationary series has constant mean, variance, and autocorrelation over time. Weak stationarity conditions:
+\begin{equation}
+    E(Y_t) = \mu, \quad Var(Y_t) = \sigma^2, \quad Cov(Y_t, Y_{t+h}) = \gamma(h).
+\end{equation}
+
+\subsection{ARIMA Models}
+For a non-stationary series, ARIMA integrates differencing ($d$):
+\begin{equation}
+    Y_t = \phi_1 Y_{t-1} + \cdots + \phi_p Y_{t-p} + \epsilon_t + \theta_1\epsilon_{t-1} + \cdots + \theta_q\epsilon_{t-q}.
+\end{equation}
+
+\subsection{Exponential Smoothing}
+For forecasting:
+\begin{equation}
+    S_t = \alpha Y_t + (1 - \alpha) S_{t-1},
+\end{equation}
+where $\alpha$ is the smoothing parameter.
+
+\section{Advanced Topics}
+\subsection{Quantile Regression}
+Models relationships at different quantiles:
+\begin{equation}
+    \min \sum_{i} \rho_{\tau}(Y_i - X_i\beta),
+\end{equation}
+where $\rho_{\tau}$ is the quantile loss function.
+
+\subsection{Hypothesis Testing}
+\textbf{F-test} evaluates joint significance of coefficients:
+\begin{equation}
+    F = \frac{(\text{RSS}_{\text{restricted}} - \text{RSS}_{\text{unrestricted}})/m}{\text{RSS}_{\text{unrestricted}}/(n - k)}.
+\end{equation}
+
+\section{Diagnostics and Remedies}
+\begin{itemize}
+    \item \textbf{Heteroscedasticity}: Use White's robust standard errors.
+    \item \textbf{Autocorrelation}: Apply Durbin-Watson or Breusch-Godfrey tests.
+    \item \textbf{Multicollinearity}: Examine Variance Inflation Factors (VIF).
+    \item \textbf{Non-linearity}: Transform variables (e.g., logarithmic).
+\end{itemize}
+
+\section{Conclusion}
+Mathematical tools underpin econometric models, enhancing their ability to describe relationships, test hypotheses, and forecast outcomes effectively. This summary serves as a foundation for further exploration in econometrics and finance.
+
+\end{document}
