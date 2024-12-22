@@ -170,4 +170,3 @@ Multiple regression expands the capability of econometrics by:
 - **Providing actionable insights**: For policy, investment, or business strategies.
 
 Python makes advanced regression techniques easy to implement and analyze, bridging theory and practice.
-```
